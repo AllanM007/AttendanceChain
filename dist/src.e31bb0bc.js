@@ -17584,7 +17584,8 @@ function signedInFlow() {
   document.querySelector('#signed-in-flow').style.display = 'block';
   document.querySelectorAll('[data-behavior=account-id]').forEach(function (el) {
     el.innerText = window.accountId;
-  }); // populate links in the notification box
+  });
+  document.getElementById("url").href = "https://explorer.testnet.near.org/accounts/".concat(window.accountId); // populate links in the notification box
 
   var accountLink = document.querySelector('[data-behavior=notification] a:nth-of-type(1)');
   accountLink.href = accountLink.href + window.accountId;
@@ -17666,7 +17667,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39163" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41205" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

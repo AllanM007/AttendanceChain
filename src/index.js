@@ -81,6 +81,8 @@ function signedInFlow() {
   document.querySelectorAll('[data-behavior=account-id]').forEach(el => {
     el.innerText = window.accountId
   })
+  
+  document.getElementById("url").href = `https://explorer.testnet.near.org/accounts/${window.accountId}`;
 
   // populate links in the notification box
   const accountLink = document.querySelector('[data-behavior=notification] a:nth-of-type(1)')
