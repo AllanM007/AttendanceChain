@@ -19,14 +19,19 @@ document.querySelector('form').onsubmit = async (event) => {
   // disable the form while the value gets updated on-chain
   fieldset.disabled = true
   
-  console.log(id);
+  console.log(id.value);
+
+  for (let currentLesson = 0; currentLesson < array.length; currentLesson++) {
+    const element = array[currentLesson];
+    
+  }
 
   try {
     // make an update call to the smart contract
     await window.contract.addAttendance({
       // pass the value that the user entered in the lesson field
       studentid: id.value.toString(),
-      attended: True
+      attended: "True"
     })
   } catch (e) {
     alert(

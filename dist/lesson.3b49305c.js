@@ -17497,7 +17497,7 @@ var submitButton = document.querySelector('form button');
 
 document.querySelector('form').onsubmit = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
-    var _event$target$element, fieldset, id;
+    var _event$target$element, fieldset, id, _currentLesson, element;
 
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -17508,36 +17508,41 @@ document.querySelector('form').onsubmit = /*#__PURE__*/function () {
             _event$target$element = event.target.elements, fieldset = _event$target$element.fieldset, id = _event$target$element.id; // disable the form while the value gets updated on-chain
 
             fieldset.disabled = true;
-            console.log(id);
-            _context.prev = 4;
-            _context.next = 7;
+            console.log(id.value);
+
+            for (_currentLesson = 0; _currentLesson < array.length; _currentLesson++) {
+              element = array[_currentLesson];
+            }
+
+            _context.prev = 5;
+            _context.next = 8;
             return window.contract.addAttendance({
               // pass the value that the user entered in the lesson field
               studentid: id.value.toString(),
-              attended: True
+              attended: "True"
             });
 
-          case 7:
-            _context.next = 13;
+          case 8:
+            _context.next = 14;
             break;
 
-          case 9:
-            _context.prev = 9;
-            _context.t0 = _context["catch"](4);
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context["catch"](5);
             alert('Something went wrong! ' + 'Maybe you need to sign out and back in? ' + 'Check your browser console for more info.');
             throw _context.t0;
 
-          case 13:
-            _context.prev = 13;
+          case 14:
+            _context.prev = 14;
             // re-enable the form, whether the call succeeded or failed
             fieldset.disabled = false;
-            return _context.finish(13);
+            return _context.finish(14);
 
-          case 16:
-            _context.next = 18;
+          case 17:
+            _context.next = 19;
             return fetchLesson();
 
-          case 18:
+          case 19:
             // show notification
             document.querySelector('[data-behavior=notification]').style.display = 'block'; // remove notification again after css animation completes
             // this allows it to be shown again next time the form is submitted
@@ -17546,12 +17551,12 @@ document.querySelector('form').onsubmit = /*#__PURE__*/function () {
               document.querySelector('[data-behavior=notification]').style.display = 'none';
             }, 11000);
 
-          case 20:
+          case 21:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[4, 9, 13, 16]]);
+    }, _callee, null, [[5, 10, 14, 17]]);
   }));
 
   return function (_x) {
@@ -17677,7 +17682,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43197" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36901" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
