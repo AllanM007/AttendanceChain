@@ -113,45 +113,6 @@ async function fetchLessons() {
     // set input elements
     // el.value = currentLesson
   })
-  // $(document).ready(function () {
-  //   $.getJSON(currentLesson, function( data ) {
-  //     var items = [];
-  //     console.log(data);
-  //     $.each( data, function( key, val ) {
-  //       // items.push( "<li id='" + key + "'>" + val + "</li>" );
-  //       $("div").append(data + "");
-  //     });
-     
-  //     // $( "<ul/>", {
-  //     //   "class": "my-new-list",
-  //     //   html: items.join( "" )
-  //     // }).appendTo( "body" );
-  //   });
-  // })
-
-  // var Lesson = [{"premium":"false","sender":"allanm.testnet","lessonid":"3","lessonname":"tox"},{"premium":"false","sender":"allanm.testnet","lessonid":"5","lessonname":"AssemblyScript"},{"premium":"false","sender":"allanm.testnet","lessonid":"6","lessonname":"NEAR"},{"premium":"false","sender":"allanm.testnet","lessonid":"2","lessonname":"Tion"},{"premium":"false","sender":"allanm.testnet","lessonid":"9","lessonname":"Blama"},{"premium":"false","sender":"allanm.testnet","lessonid":"1","lessonname":"Wayne"},{"premium":"false","sender":"allanm.testnet","lessonid":"0","lessonname":"Aurora"},{"premium":"false","sender":"allanm.testnet","lessonid":"7","lessonname":"Rainbow"},{"premium":"false","sender":"allanm.testnet","lessonid":"4","lessonname":"Rust"},{"premium":"false","sender":"allanm.testnet","lessonid":"8","lessonname":"Yocta"}]
-
-  // $(document).ready( function() {
-  //   $.noConflict();
-  //   $("#table1").DataTable({
-  //     data: currentLesson,
-  //     columns: [
-  //       { title: "Premium" },
-  //       { title: "Sender" },
-  //       { title: "Lesson Id" },
-  //       { title: "Lesson Name" }
-  //   ]
-  //   });
-    // let tr = $("<tr />");
-  
-    // $.each(currentLesson, function(_, obj) {
-    //   tr = $("<tr />");
-    //   $.each(obj, function(_, text) {
-    //     tr.append("<td>" + text + "</td>")
-    //   });
-    //   tr.appendTo(tbody);
-    // });
-  // })
 }
 
 // `nearInitPromise` gets called on page load
