@@ -17497,7 +17497,7 @@ var submitButton = document.querySelector('form button');
 
 document.querySelector('form').onsubmit = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
-    var _event$target$element, fieldset, id, _currentLesson, element;
+    var _event$target$element, fieldset, id, Lessons, l, element, result, updatedLesson;
 
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -17509,40 +17509,75 @@ document.querySelector('form').onsubmit = /*#__PURE__*/function () {
 
             fieldset.disabled = true;
             console.log(id.value);
+            _context.next = 6;
+            return contract.getLessons();
 
-            for (_currentLesson = 0; _currentLesson < array.length; _currentLesson++) {
-              element = array[_currentLesson];
-            }
-
-            _context.prev = 5;
-            _context.next = 8;
-            return window.contract.addAttendance({
-              // pass the value that the user entered in the lesson field
-              studentid: id.value.toString(),
-              attended: "True"
-            });
+          case 6:
+            Lessons = _context.sent;
+            l = 0;
 
           case 8:
-            _context.next = 14;
+            if (!(l < Lessons.length)) {
+              _context.next = 32;
+              break;
+            }
+
+            element = Lessons[l];
+            result = element["lessonid"] == id.value;
+            console.log(result);
+
+            if (!(result === true)) {
+              _context.next = 28;
+              break;
+            }
+
+            updatedLesson = element;
+            _context.prev = 14;
+            _context.next = 17;
+            return window.contract.addAttendance({
+              // pass the value that the user entered in the lesson field
+              studentid: updatedLesson.sender,
+              studentname: updatedLesson.sender,
+              schoolname: updatedLesson.school,
+              loggedminutes: updatedLesson.lessontime,
+              lessonid: updatedLesson.lessonid,
+              subject: updatedLesson.lessonname,
+              attended: true
+            });
+
+          case 17:
+            _context.next = 23;
             break;
 
-          case 10:
-            _context.prev = 10;
-            _context.t0 = _context["catch"](5);
+          case 19:
+            _context.prev = 19;
+            _context.t0 = _context["catch"](14);
             alert('Something went wrong! ' + 'Maybe you need to sign out and back in? ' + 'Check your browser console for more info.');
             throw _context.t0;
 
-          case 14:
-            _context.prev = 14;
+          case 23:
+            _context.prev = 23;
             // re-enable the form, whether the call succeeded or failed
             fieldset.disabled = false;
-            return _context.finish(14);
+            return _context.finish(23);
 
-          case 17:
-            _context.next = 19;
+          case 26:
+            _context.next = 29;
+            break;
+
+          case 28:
+            console.log("lesson not found");
+
+          case 29:
+            l++;
+            _context.next = 8;
+            break;
+
+          case 32:
+            _context.next = 34;
             return fetchLesson();
 
-          case 19:
+          case 34:
             // show notification
             document.querySelector('[data-behavior=notification]').style.display = 'block'; // remove notification again after css animation completes
             // this allows it to be shown again next time the form is submitted
@@ -17551,12 +17586,12 @@ document.querySelector('form').onsubmit = /*#__PURE__*/function () {
               document.querySelector('[data-behavior=notification]').style.display = 'none';
             }, 11000);
 
-          case 21:
+          case 36:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[5, 10, 14, 17]]);
+    }, _callee, null, [[14, 19, 23, 26]]);
   }));
 
   return function (_x) {
@@ -17682,7 +17717,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36901" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39163" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

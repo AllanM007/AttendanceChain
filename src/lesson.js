@@ -21,28 +21,43 @@ document.querySelector('form').onsubmit = async (event) => {
   
   console.log(id.value);
 
-  for (let currentLesson = 0; currentLesson < array.length; currentLesson++) {
-    const element = array[currentLesson];
-    
-  }
+  var Lessons = await contract.getLessons();
 
-  try {
-    // make an update call to the smart contract
-    await window.contract.addAttendance({
-      // pass the value that the user entered in the lesson field
-      studentid: id.value.toString(),
-      attended: "True"
-    })
-  } catch (e) {
-    alert(
-      'Something went wrong! ' +
-      'Maybe you need to sign out and back in? ' +
-      'Check your browser console for more info.'
-    )
-    throw e
-  } finally {
-    // re-enable the form, whether the call succeeded or failed
-    fieldset.disabled = false
+  for (let l = 0; l < Lessons.length; l++) {
+    const element = Lessons[l];
+
+    const result = element["lessonid"] == id.value
+    console.log(result);
+
+    if (result === true) {
+      const updatedLesson = element;
+
+      try {
+        // make an update call to the smart contract
+        await window.contract.addAttendance({
+          // pass the value that the user entered in the lesson field
+          studentid: updatedLesson.sender,
+          studentname: updatedLesson.sender,
+          schoolname: updatedLesson.school,
+          loggedminutes: updatedLesson.lessontime,
+          lessonid: updatedLesson.lessonid,
+          subject: updatedLesson.lessonname,
+          attended: true
+        })
+      } catch (e) {
+        alert(
+          'Something went wrong! ' +
+          'Maybe you need to sign out and back in? ' +
+          'Check your browser console for more info.'
+        )
+        throw e
+      } finally {
+        // re-enable the form, whether the call succeeded or failed
+        fieldset.disabled = false
+      }
+    } else {
+      console.log("lesson not found");
+    }
   }
 
   // update the greeting in the UI
