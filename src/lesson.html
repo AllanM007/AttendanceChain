@@ -14,6 +14,7 @@
     <title>Lessons<title>
 </head>
 <body>
+  <div id="signed-in-flow" style="display: none">
     <button class="link">
         <a id="url" target="_blank" style="float: left">Explore My Transactions</a>
       </button>
@@ -43,6 +44,16 @@
           </form>
           <span data-behavior="card"></span>
     </span>
+  </div>
+  <aside data-behavior="notification" style="display: none">
+    <a target="_blank" href="https://explorer.testnet.near.org/accounts/"></a>
+    called method: 'addAttendance' in contract:
+    <a target="_blank" href="https://explorer.testnet.near.org/accounts/"></a>
+    <footer>
+      <div>✔ Succeeded</div>
+      <div>Just now</div>
+    </footer>
+  </aside>
     <script src="./lesson.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
