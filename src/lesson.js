@@ -101,13 +101,17 @@ async function fetchLessons() {
     for (var i = 0; i < currentLesson.length; i++) {
       // append each lesson to our card
       const cardHTML = `
+      <div class="row">
+      <div class="md-6">
       <div class="card-body">
-      <h5 class="card-title" id="lessonname" value=${currentLesson[i].lessonname}>Lesson Name: ${currentLesson[i].lessonname}</h5>
-      <p class="card-text" id="sender" value=${currentLesson[i].sender}>${currentLesson[i].sender}</p>
-      <p class="card-text" id="loggedminutes" value=${currentLesson[i].lessontime}>${currentLesson[i].lessontime}</p>
-      <p class="card-text" id="schoolname" value=${currentLesson[i].school}>${currentLesson[i].school}</p>
-      <p class="card-text" id="lessonid" value=${currentLesson[i].lessonid}>${currentLesson[i].lessonid}</p>
-      <button type="submit" class="btn btn-primary">View Lesson</button>
+      <h7 class="card-title">Lesson Name: ${currentLesson[i].lessonname}</h7>
+      <p class="card-text">Tutor: ${currentLesson[i].sender}</p>
+      <p class="card-text">Duration: ${currentLesson[i].lessontime} minutes</p>
+      <p class="card-text">School: ${currentLesson[i].school}</p>
+      <button class="btn btn-primary">ID: ${currentLesson[i].lessonid}</button>
+      <hr>
+      </div>
+      </div>
       </div>`
 
       el.innerHTML += cardHTML

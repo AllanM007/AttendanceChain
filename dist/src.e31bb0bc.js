@@ -17442,9 +17442,9 @@ function _initContract() {
             _context.next = 7;
             return new _nearApiJs.Contract(window.walletConnection.account(), nearConfig.contractName, {
               // View methods are read only. They don't modify the state, but usually return some value.
-              viewMethods: ['getAttendance', 'getLessons', 'getGreeting'],
+              viewMethods: ['getAttendance', 'getLessons'],
               // Change methods can modify the state. But you don't receive the returned value when called.
-              changeMethods: ['addAttendance', 'addLesson', 'setGreeting']
+              changeMethods: ['addAttendance', 'addLesson']
             });
 
           case 7:
@@ -17666,7 +17666,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33497" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44095" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

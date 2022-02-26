@@ -17442,9 +17442,9 @@ function _initContract() {
             _context.next = 7;
             return new _nearApiJs.Contract(window.walletConnection.account(), nearConfig.contractName, {
               // View methods are read only. They don't modify the state, but usually return some value.
-              viewMethods: ['getAttendance', 'getLessons', 'getGreeting'],
+              viewMethods: ['getAttendance', 'getLessons'],
               // Change methods can modify the state. But you don't receive the returned value when called.
-              changeMethods: ['addAttendance', 'addLesson', 'setGreeting']
+              changeMethods: ['addAttendance', 'addLesson']
             });
 
           case 7:
@@ -17634,7 +17634,7 @@ function _fetchLessons() {
               // el.innerText = currentLesson
               for (var i = 0; i < currentLesson.length; i++) {
                 // append each lesson to our card
-                var cardHTML = "\n      <div class=\"card-body\">\n      <h5 class=\"card-title\" id=\"lessonname\" value=".concat(currentLesson[i].lessonname, ">Lesson Name: ").concat(currentLesson[i].lessonname, "</h5>\n      <p class=\"card-text\" id=\"sender\" value=").concat(currentLesson[i].sender, ">").concat(currentLesson[i].sender, "</p>\n      <p class=\"card-text\" id=\"loggedminutes\" value=").concat(currentLesson[i].lessontime, ">").concat(currentLesson[i].lessontime, "</p>\n      <p class=\"card-text\" id=\"schoolname\" value=").concat(currentLesson[i].school, ">").concat(currentLesson[i].school, "</p>\n      <p class=\"card-text\" id=\"lessonid\" value=").concat(currentLesson[i].lessonid, ">").concat(currentLesson[i].lessonid, "</p>\n      <button type=\"submit\" class=\"btn btn-primary\">View Lesson</button>\n      </div>");
+                var cardHTML = "\n      <div class=\"row\">\n      <div class=\"md-6\">\n      <div class=\"card-body\">\n      <h7 class=\"card-title\">Lesson Name: ".concat(currentLesson[i].lessonname, "</h7>\n      <p class=\"card-text\">Tutor: ").concat(currentLesson[i].sender, "</p>\n      <p class=\"card-text\">Duration: ").concat(currentLesson[i].lessontime, " minutes</p>\n      <p class=\"card-text\">School: ").concat(currentLesson[i].school, "</p>\n      <button class=\"btn btn-primary\">ID: ").concat(currentLesson[i].lessonid, "</button>\n      <hr>\n      </div>\n      </div>\n      </div>");
                 el.innerHTML += cardHTML;
               }
 
@@ -17683,7 +17683,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33497" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44095" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
