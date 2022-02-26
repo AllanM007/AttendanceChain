@@ -23,11 +23,11 @@ document.querySelector('form').onsubmit = async (event) => {
 
   var Lessons = await contract.getLessons();
 
+  // loop through lessons array to check if lesson id entered by user is in present
   for (let l = 0; l < Lessons.length; l++) {
     const element = Lessons[l];
 
     const result = element["lessonid"] == id.value
-    console.log(result);
 
     if (result === true) {
       const updatedLesson = element;
@@ -35,7 +35,7 @@ document.querySelector('form').onsubmit = async (event) => {
       try {
         // make an update call to the smart contract
         await window.contract.addAttendance({
-          // pass the value that the user entered in the lesson field
+          // pass the value that the user entered in the attendance field
           studentid: updatedLesson.sender,
           studentname: updatedLesson.sender,
           schoolname: updatedLesson.school,
@@ -60,7 +60,7 @@ document.querySelector('form').onsubmit = async (event) => {
     }
   }
 
-  // update the greeting in the UI
+  // update the lesson in the UI
   await fetchLesson()
 
   // show notification
@@ -90,12 +90,14 @@ function signedInFlow() {
 
 // update global currentLesson variable; update DOM with it
 async function fetchLessons() {
+  
+  // call contract to fetch lessons
   currentLesson = await contract.getLessons()
   document.querySelectorAll('[data-behavior="card"]').forEach(el => {
     // set divs, spans, etc
     // el.innerText = currentLesson
     for (var i = 0; i < currentLesson.length; i++) {
-      // append each lesson to our page
+      // append each lesson to our card
       const cardHTML = `
       <div class="card-body">
       <h5 class="card-title" id="lessonname" value=${currentLesson[i].lessonname}>Lesson Name: ${currentLesson[i].lessonname}</h5>
