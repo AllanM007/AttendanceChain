@@ -24,7 +24,7 @@ document.querySelector('form').onsubmit = async (event) => {
   try {
     // make an update call to the smart contract
     await window.contract.addLesson({
-      // pass the value that the user entered in the lesson field
+      // pass the value that the user entered in the lesson field and convert to string
       lessonid: id.value.toString(),
       lessonname: name.value.toString(),
       lessontime: time.value.toString(),
@@ -105,7 +105,6 @@ async function fetchLesson() {
   document.querySelectorAll('[data-behavior=lesson]').forEach(el => {
     // set divs, spans, etc
     el.innerText = currentLesson
-    console.log(currentLesson);
 
     // set input elements
     el.value = currentLesson
