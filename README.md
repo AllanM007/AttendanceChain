@@ -3,6 +3,11 @@ attendance-chain
 
 This app was initialized with [create-near-app]
 
+This app allows a parent to add lessons to their children's curriculum and monitor attendance of the lessons their children attended.
+
+Project Flow image below:
+![](./src/assets/IMG_20220226_115244.jpg)
+
 
 Quick Start
 ===========
