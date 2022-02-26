@@ -3,7 +3,15 @@ attendance-chain
 
 This app was initialized with [create-near-app]
 
-This app allows a parent to add lessons to their children's curriculum and monitor attendance of the lessons their children attended.
+This is an blockchain-powered education dapp that allows a parent to add lessons to their children's curriculum and monitor attendance of the lessons their children attended.
+
+Current features include:
+1. Sign in with NEAR.
+2. Parent adds lesson to curriculum and data is saved on chain.
+3. Student can view lessons posted by parent and submit attendance confirmation using lesson id.
+4. Attendance data for each lesson and student is saved on chain.
+5. Users can explore transactions using the NEAR explorer tool with on-click redirection.
+6. Users can sign out of the session with their NEAR account.
 
 Project Flow image below:
 ![](./src/assets/IMG_20220226_115244.jpg)
