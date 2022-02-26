@@ -19,24 +19,26 @@ const DATA_LIMIT = 10;
 
 const AttendanceArray = new PersistentVector<string>("attArray");
 
-// export function getLesson(accountId: string): string | null {
-//   return storage.get<string>(accountId, DEFAULT_MESSAGE)
-// }
-
 
 export function addAttendance(studentid: string, studentname: string, schoolname: string, loggedminutes: string, lessonid: string, subject: string, attended: bool): void {
-  // const accountId = Context.sender
+  const accountId = Context.sender;
 
+  // pass form parameters to assemblyscript smart contract object
   const message = new AttendanceData(studentid, studentname, schoolname, loggedminutes, lessonid, subject, attended);
   
+  logging.log(`Save attendance of "${subject}" for account "${accountId}"`)
   // Adding the message to end of the persistent collection
   attendance.push(message);
 }
 
+// call method to get AttendanceData objects as an array
 export function getAttendance(): AttendanceData[] {
+  // get minimum value of passed arguments
   const attData = min(DATA_LIMIT, attendance.length);
   const startIndex = attendance.length - attData;
   const result = new Array<AttendanceData>(attData);
+
+  // loop through model object and return an array
   for (let i = 0; i < attData; i++) {
     result[i] = attendance[i + startIndex];
   }
@@ -48,10 +50,12 @@ export function addLesson(lessonid: string, lessonname: string, lessontime: stri
 
   const message = new Lesson(lessonid, lessonname, lessontime, school);
   
+  // log information to transaction metadata
   logging.log(`Save lesson "${lessonname}" for account "${accountId}"`)
   lesson.push(message)
 }
 
+// call method to get AttendanceData objects as an array
 export function getLessons(): Lesson[] {
   const attData = min(DATA_LIMIT, lesson.length);
   const startIndex = lesson.length - attData;
@@ -60,17 +64,4 @@ export function getLessons(): Lesson[] {
     result[i] = lesson[i + startIndex];
   }
   return result;
-}
-
-const DEFAULT_MESSAGE = 'Hello'
-
-export function getGreeting(accountId: string): string | null {
-  return storage.get<string>(accountId, DEFAULT_MESSAGE)
-}
-
-export function setGreeting(message: string): void {
-  const accountId = Context.sender
-  // Use logging.log to record logs permanently to the blockchain!
-  logging.log(`Saving greeting "${message}" for account "${accountId}"`)
-  storage.set(accountId, message)
 }
