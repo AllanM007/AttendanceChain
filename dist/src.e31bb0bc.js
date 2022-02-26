@@ -17512,7 +17512,7 @@ document.querySelector('form').onsubmit = /*#__PURE__*/function () {
             _context.prev = 4;
             _context.next = 7;
             return window.contract.addLesson({
-              // pass the value that the user entered in the lesson field
+              // pass the value that the user entered in the lesson field and convert to string
               lessonid: id.value.toString(),
               lessonname: name.value.toString(),
               lessontime: time.value.toString(),
@@ -17620,8 +17620,7 @@ function _fetchLesson() {
             currentLesson = _context2.sent;
             document.querySelectorAll('[data-behavior=lesson]').forEach(function (el) {
               // set divs, spans, etc
-              el.innerText = currentLesson;
-              console.log(currentLesson); // set input elements
+              el.innerText = currentLesson; // set input elements
 
               el.value = currentLesson;
             });
@@ -17667,7 +17666,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43421" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33497" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

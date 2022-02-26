@@ -81,6 +81,8 @@ function signedOutFlow() {
 // Displaying the signed in flow container and fill in account-specific data
 function signedInFlow() {
 
+  document.getElementById("url").href = `https://explorer.testnet.near.org/accounts/${window.accountId}`;
+
   document.querySelectorAll('[data-behavior=account-id]').forEach(el => {
     el.innerText = window.accountId
   })

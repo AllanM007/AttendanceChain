@@ -17518,24 +17518,23 @@ document.querySelector('form').onsubmit = /*#__PURE__*/function () {
 
           case 8:
             if (!(l < Lessons.length)) {
-              _context.next = 32;
+              _context.next = 31;
               break;
             }
 
             element = Lessons[l];
             result = element["lessonid"] == id.value;
-            console.log(result);
 
             if (!(result === true)) {
-              _context.next = 28;
+              _context.next = 27;
               break;
             }
 
             updatedLesson = element;
-            _context.prev = 14;
-            _context.next = 17;
+            _context.prev = 13;
+            _context.next = 16;
             return window.contract.addAttendance({
-              // pass the value that the user entered in the lesson field
+              // pass the value that the user entered in the attendance field
               studentid: updatedLesson.sender,
               studentname: updatedLesson.sender,
               schoolname: updatedLesson.school,
@@ -17545,39 +17544,39 @@ document.querySelector('form').onsubmit = /*#__PURE__*/function () {
               attended: true
             });
 
-          case 17:
-            _context.next = 23;
+          case 16:
+            _context.next = 22;
             break;
 
-          case 19:
-            _context.prev = 19;
-            _context.t0 = _context["catch"](14);
+          case 18:
+            _context.prev = 18;
+            _context.t0 = _context["catch"](13);
             alert('Something went wrong! ' + 'Maybe you need to sign out and back in? ' + 'Check your browser console for more info.');
             throw _context.t0;
 
-          case 23:
-            _context.prev = 23;
+          case 22:
+            _context.prev = 22;
             // re-enable the form, whether the call succeeded or failed
             fieldset.disabled = false;
-            return _context.finish(23);
+            return _context.finish(22);
 
-          case 26:
-            _context.next = 29;
+          case 25:
+            _context.next = 28;
             break;
 
-          case 28:
+          case 27:
             console.log("lesson not found");
 
-          case 29:
+          case 28:
             l++;
             _context.next = 8;
             break;
 
-          case 32:
-            _context.next = 34;
+          case 31:
+            _context.next = 33;
             return fetchLesson();
 
-          case 34:
+          case 33:
             // show notification
             document.querySelector('[data-behavior=notification]').style.display = 'block'; // remove notification again after css animation completes
             // this allows it to be shown again next time the form is submitted
@@ -17586,12 +17585,12 @@ document.querySelector('form').onsubmit = /*#__PURE__*/function () {
               document.querySelector('[data-behavior=notification]').style.display = 'none';
             }, 11000);
 
-          case 36:
+          case 35:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[14, 19, 23, 26]]);
+    }, _callee, null, [[13, 18, 22, 25]]);
   }));
 
   return function (_x) {
@@ -17606,6 +17605,7 @@ function signedOutFlow() {
 
 
 function signedInFlow() {
+  document.getElementById("url").href = "https://explorer.testnet.near.org/accounts/".concat(window.accountId);
   document.querySelectorAll('[data-behavior=account-id]').forEach(function (el) {
     el.innerText = window.accountId;
   });
@@ -17633,7 +17633,7 @@ function _fetchLessons() {
               // set divs, spans, etc
               // el.innerText = currentLesson
               for (var i = 0; i < currentLesson.length; i++) {
-                // append each lesson to our page
+                // append each lesson to our card
                 var cardHTML = "\n      <div class=\"card-body\">\n      <h5 class=\"card-title\" id=\"lessonname\" value=".concat(currentLesson[i].lessonname, ">Lesson Name: ").concat(currentLesson[i].lessonname, "</h5>\n      <p class=\"card-text\" id=\"sender\" value=").concat(currentLesson[i].sender, ">").concat(currentLesson[i].sender, "</p>\n      <p class=\"card-text\" id=\"loggedminutes\" value=").concat(currentLesson[i].lessontime, ">").concat(currentLesson[i].lessontime, "</p>\n      <p class=\"card-text\" id=\"schoolname\" value=").concat(currentLesson[i].school, ">").concat(currentLesson[i].school, "</p>\n      <p class=\"card-text\" id=\"lessonid\" value=").concat(currentLesson[i].lessonid, ">").concat(currentLesson[i].lessonid, "</p>\n      <button type=\"submit\" class=\"btn btn-primary\">View Lesson</button>\n      </div>");
                 el.innerHTML += cardHTML;
               }
@@ -17683,7 +17683,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43421" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33497" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
